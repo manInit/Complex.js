@@ -1,2 +1,2 @@
 # Complex.js
-addcomplex number in js
+add complex number in js
