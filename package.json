@@ -1,0 +1,19 @@
+{
+  "name": "complex.js",
+  "version": "0.0.1",
+  "description": "add complex number in js",
+  "main": "complex.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "keywords": [
+    "complex",
+    "number"
+  ],
+  "author": "Denis Bronnikov",
+  "license": "MIT",
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^6.2.0"
+  }
+}
