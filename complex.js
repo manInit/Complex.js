@@ -32,7 +32,7 @@ class Complex {
     return new Complex(cn1.re * cn2.re - cn1.im * cn2.im, cn1.re * cn2.im + cn1.im * cn2.re);
   }
   static div(cn1, cn2) {
-    return new Complex((cn1.re * cn2.re + cn1.im * cn2.im)/(cn2.re ** 2 + cn2.im ** 2), (cn2.re * cn1.im + cn1.re * cn2.im)/(cn2.re ** 2 + cn2.im ** 2));
+    return new Complex((cn1.re * cn2.re + cn1.im * cn2.im)/(cn2.re ** 2 + cn2.im ** 2), (cn2.re * cn1.im - cn1.re * cn2.im)/(cn2.re ** 2 + cn2.im ** 2));
   }
   static pow(cn, pow) {
     if (cn.im === 0 && cn.re < 0) {
