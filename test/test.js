@@ -132,3 +132,33 @@ describe("div", function() {
     assert.equal(testNumber.arg, refNumber.arg);
   });
 });
+
+describe("sqrt", function() {
+  it("Complex.sqrt([3,4]) -> [2,1]", function() {
+    let n = new Complex(3, 4);
+    testNumber = Complex.sqrt(n);
+    refNumber = new Complex(2, 1);
+
+    assert.equal(testNumber.re, refNumber.re);
+    assert.equal(testNumber.im, refNumber.im);
+    assert.equal(testNumber.arg, refNumber.arg);
+  });
+  it("Complex.sqrt([-4,0]) -> [0,2]", function() {
+    let n = new Complex(-4, 0);
+    testNumber = Complex.sqrt(n);
+    refNumber = new Complex(0, 2);
+
+    assert.equal(testNumber.re, refNumber.re);
+    assert.equal(testNumber.im, refNumber.im);
+    assert.equal(testNumber.arg, refNumber.arg);
+  });
+  it("Complex.sqrt([9,0]) -> [3,0]", function() {
+    let n = new Complex(9,0);
+    testNumber = Complex.sqrt(n);
+    refNumber = new Complex(3, 0);
+
+    assert.equal(testNumber.re, refNumber.re);
+    assert.equal(testNumber.im, refNumber.im);
+    assert.equal(testNumber.arg, refNumber.arg);
+  });
+});

@@ -1,5 +1,9 @@
-class Complex {
+// support func
+function sgn(x) {
+  return x >= 0 ? 1 : -1;
+}
 
+class Complex {
   constructor(re, im) {
     this.re = re;
     this.im = im;
@@ -32,7 +36,11 @@ class Complex {
     return new Complex(cn1.re * cn2.re - cn1.im * cn2.im, cn1.re * cn2.im + cn1.im * cn2.re);
   }
   static div(cn1, cn2) {
-    return new Complex((cn1.re * cn2.re + cn1.im * cn2.im)/(cn2.re ** 2 + cn2.im ** 2), (cn2.re * cn1.im - cn1.re * cn2.im)/(cn2.re ** 2 + cn2.im ** 2));
+    return new Complex((cn1.re * cn2.re + cn1.im * cn2.im)/(cn2.re ** 2 + cn2.im ** 2), 
+                       (cn2.re * cn1.im - cn1.re * cn2.im)/(cn2.re ** 2 + cn2.im ** 2));
+  }
+  static sqrt(cn) {
+    return new Complex(Math.sqrt((cn.re + cn.mod)/2), sgn(cn.im) * Math.sqrt((-cn.re + cn.mod)/2));
   }
   static pow(cn, pow) {
     if (cn.im === 0 && cn.re < 0) {
