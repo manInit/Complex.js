@@ -105,7 +105,7 @@ describe("div", function() {
     let n1 = new Complex(2, 5);
     let n2 = new Complex(3, -2);
     testNumber = Complex.div(n1, n2);
-    refNumber = new Complex(-4/13, 19/13);
+    refNumber = new Complex(-4 / 13, 19 / 13);
 
     assert.equal(testNumber.re, refNumber.re);
     assert.equal(testNumber.im, refNumber.im);
@@ -125,7 +125,7 @@ describe("div", function() {
     let n1 = new Complex(2,7);
     let n2 = new Complex(10,0);
     testNumber = Complex.div(n1, n2);
-    refNumber = new Complex(1/5, 7/10);
+    refNumber = new Complex(1 / 5, 7 / 10);
 
     assert.equal(testNumber.re, refNumber.re);
     assert.equal(testNumber.im, refNumber.im);
@@ -156,6 +156,36 @@ describe("sqrt", function() {
     let n = new Complex(9,0);
     testNumber = Complex.sqrt(n);
     refNumber = new Complex(3, 0);
+
+    assert.equal(testNumber.re, refNumber.re);
+    assert.equal(testNumber.im, refNumber.im);
+    assert.equal(testNumber.arg, refNumber.arg);
+  });
+});
+
+describe("exp", function() {
+  it("Complex.exp([2,Pi/3]) -> [e^2(cos(PI/3)),e^2(sin(PI/3))]", function() {
+    let n = new Complex(2, Math.PI / 3);
+    testNumber = Complex.exp(n);
+    refNumber = new Complex(Math.exp(2) * Math.cos(Math.PI / 3), Math.exp(2) * Math.sin(Math.PI / 3));
+
+    assert.equal(testNumber.re, refNumber.re);
+    assert.equal(testNumber.im, refNumber.im);
+    assert.equal(testNumber.arg, refNumber.arg);
+  });
+  it("Complex.exp([0,PI/2]) -> [0,1]", function() {
+    let n = new Complex(0, Math.PI / 2);
+    testNumber = Complex.exp(n);
+    refNumber = new Complex(0, 1);
+
+    assert.equal(testNumber.re, refNumber.re);
+    assert.equal(testNumber.im, refNumber.im);
+    assert.equal(testNumber.arg, refNumber.arg);
+  });
+  it("Complex.exp([0,0]) -> [1,0]", function() {
+    let n = new Complex(0,0);
+    testNumber = Complex.exp(n);
+    refNumber = new Complex(1, 0);
 
     assert.equal(testNumber.re, refNumber.re);
     assert.equal(testNumber.im, refNumber.im);
