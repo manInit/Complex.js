@@ -1,8 +1,3 @@
-// support func
-function sgn(x) {
-  return x >= 0 ? 1 : -1;
-}
-
 class Complex {
   constructor(re, im) {
     this.re = re;
@@ -17,6 +12,10 @@ class Complex {
   }
   toExponen() {
     return `${this.mod.toFixed(2)}exp(${this.arg.toFixed(2)}i)`;
+  }
+
+  static sgn(x) {
+    return x >= 0 ? 1 : -1;
   }
 
   get mod() {
@@ -36,25 +35,35 @@ class Complex {
     return new Complex(cn1.re * cn2.re - cn1.im * cn2.im, cn1.re * cn2.im + cn1.im * cn2.re);
   }
   static div(cn1, cn2) {
-    return new Complex((cn1.re * cn2.re + cn1.im * cn2.im)/(cn2.re ** 2 + cn2.im ** 2), 
-                       (cn2.re * cn1.im - cn1.re * cn2.im)/(cn2.re ** 2 + cn2.im ** 2));
+    return new Complex((cn1.re * cn2.re + cn1.im * cn2.im) / (cn2.re ** 2 + cn2.im ** 2), 
+                       (cn2.re * cn1.im - cn1.re * cn2.im) / (cn2.re ** 2 + cn2.im ** 2));
   }
   static sqrt(cn) {
-    return new Complex(Math.sqrt((cn.re + cn.mod) / 2), sgn(cn.im) * Math.sqrt((-cn.re + cn.mod) / 2));
+    return new Complex(Math.sqrt((cn.re + cn.mod) / 2), Complex.sgn(cn.im) * Math.sqrt((-cn.re + cn.mod) / 2));
   }
   static exp(cn) {
     return new Complex(Math.exp(cn.re) * Math.cos(cn.im), Math.exp(cn.re) * Math.sin(cn.im));
   }
+  static sin(cn) {
+    return new Complex(Math.sin(cn.re) * Math.cosh(cn.im), Math.cos(cn.re) * Math.sinh(cn.im));
+  }
+  static cos(cn) {
+    return new Complex(Math.cos(cn.re) * Math.cosh(cn.im), Math.sin(-cn.re) * Math.sinh(cn.im));
+  }
+  static ln(cn) {
+    return new Complex(Math.log(cn.mod), cn.arg);
+  }
+  static log10(cn) {
+    return new Complex(Math.log(cn.mod) * Math.LOG10E, cn.arg * Math.LOG10E);
+  }
+  static log(base, cn) {
+    return new Complex(Math.log(cn.mod) / Math.log(base), cn.arg * Math.log(base));
+  }
   static pow(cn, pow) {
-    if (cn.im === 0 && cn.re < 0) {
-      cn.im = (-cn.re) ** pow;
-      cn.re = 0;  
-    } else {
-      cn.re = cn.mod ** pow * Math.cos(pow * cn.arg);
-      cn.im = cn.mod ** pow * Math.sin(pow * cn.arg);
-    }
+    cn.re = cn.mod ** pow * Math.cos(pow * cn.arg);
+    cn.im = cn.mod ** pow * Math.sin(pow * cn.arg);
   }
 
 }
 
-module.exports = Complex;
+if (module.exports) module.exports = Complex;
