@@ -192,3 +192,63 @@ describe("exp", function() {
     assert.equal(testNumber.arg, refNumber.arg);
   });
 });
+
+describe("sin", function() {
+  it("Complex.sin([4,5]) -> [,]", function() {
+    let n = new Complex(4,5);
+    testNumber = Complex.sin(n);
+    refNumber = new Complex(Math.sin(4) * Math.cosh(5), Math.cos(4) * Math.sinh(5));
+
+    assert.equal(testNumber.re, refNumber.re);
+    assert.equal(testNumber.im, refNumber.im);
+    assert.equal(testNumber.arg, refNumber.arg);
+  });
+  it("Complex.sin([PI/2,0]) -> [1,0]", function() {
+    let n = new Complex(Math.PI / 2, 0);
+    testNumber = Complex.sin(n);
+    refNumber = new Complex(1,0);
+
+    assert.equal(testNumber.re, refNumber.re);
+    assert.equal(testNumber.im, refNumber.im);
+    assert.equal(testNumber.arg, refNumber.arg);
+  });
+  it("Complex.sin([PI/2,1]) -> [cosh(2),0]", function() {
+    let n = new Complex(Math.PI / 2, 1);
+    testNumber = Complex.sin(n);
+    refNumber = new Complex(Math.cosh(1), 0);
+
+    assert.equal(testNumber.re, refNumber.re);
+    assert.equal(testNumber.im, refNumber.im);
+    assert.equal(testNumber.arg, refNumber.arg);
+  });
+});
+
+describe("cos", function() {
+  it("Complex.cos([4,5]) -> [,]", function() {
+    let n = new Complex(4,5);
+    testNumber = Complex.cos(n);
+    refNumber = new Complex(Math.cos(4) * Math.cosh(5), -Math.sin(4) * Math.sinh(5));
+
+    assert.equal(testNumber.re, refNumber.re);
+    assert.equal(testNumber.im, refNumber.im);
+    assert.equal(testNumber.arg, refNumber.arg);
+  });
+  it("Complex.cos([0,0]) -> [1,0]", function() {
+    let n = new Complex(0, 0);
+    testNumber = Complex.cos(n);
+    refNumber = new Complex(1,0);
+
+    assert.equal(testNumber.re, refNumber.re);
+    assert.equal(testNumber.im, refNumber.im);
+    assert.equal(testNumber.arg, refNumber.arg);
+  });
+  it("Complex.cos([PI/2,1]) -> [0,-sinh(1)]", function() {
+    let n = new Complex(Math.PI / 2, 1);
+    testNumber = Complex.cos(n);
+    refNumber = new Complex(0, -Math.sinh(1));
+
+    assert.equal(testNumber.re, refNumber.re);
+    assert.equal(testNumber.im, refNumber.im);
+    assert.equal(testNumber.arg, refNumber.arg);
+  });
+});
