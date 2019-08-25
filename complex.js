@@ -50,16 +50,13 @@ class Complex {
   static cos(cn) {
     return new Complex(Math.cos(cn.re) * Math.cosh(cn.im), Math.sin(-cn.re) * Math.sinh(cn.im));
   }
-  static ln(cn) {
-    return new Complex(Math.log(cn.mod), cn.arg);
+  static log(cn, base) {
+    if (base === undefined) return new Complex(Math.log(cn.mod), cn.arg);
+    else return new Complex(Math.log(cn.mod) / Math.log(base), cn.arg * Math.log(base));
   }
   static log10(cn) {
     return new Complex(Math.log(cn.mod) * Math.LOG10E, cn.arg * Math.LOG10E);
   }
-  static log(base, cn) {
-    return new Complex(Math.log(cn.mod) / Math.log(base), cn.arg * Math.log(base));
-  }
-
 }
 
 if (module.exports) module.exports = Complex;
