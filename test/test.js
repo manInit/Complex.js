@@ -252,3 +252,33 @@ describe("cos", function() {
     assert.equal(testNumber.arg, refNumber.arg);
   });
 });
+
+describe("ln", function() {
+  it("Complex.ln([-1,0]) -> [0,PI]", function() {
+    let n = new Complex(-1, 0);
+    testNumber = Complex.ln(n);
+    refNumber = new Complex(0, Math.PI);
+
+    assert.equal(testNumber.re, refNumber.re);
+    assert.equal(testNumber.im, refNumber.im);
+    assert.equal(testNumber.arg, refNumber.arg);
+  });
+  it("Complex.ln([e^2,0]) -> [2,0]", function() {
+    let n = new Complex(Math.E ** 2, 0);
+    testNumber = Complex.ln(n);
+    refNumber = new Complex(2,0);
+
+    assert.equal(testNumber.re, refNumber.re);
+    assert.equal(testNumber.im, refNumber.im);
+    assert.equal(testNumber.arg, refNumber.arg);
+  });
+  it("Complex.cos([0,1]) -> [0,PI/2]", function() {
+    let n = new Complex(0, 1);
+    testNumber = Complex.ln(n);
+    refNumber = new Complex(0, Math.PI / 2);
+
+    assert.equal(testNumber.re, refNumber.re);
+    assert.equal(testNumber.im, refNumber.im);
+    assert.equal(testNumber.arg, refNumber.arg);
+  });
+});
