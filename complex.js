@@ -59,10 +59,6 @@ class Complex {
   static log(base, cn) {
     return new Complex(Math.log(cn.mod) / Math.log(base), cn.arg * Math.log(base));
   }
-  static pow(cn, pow) {
-    cn.re = cn.mod ** pow * Math.cos(pow * cn.arg);
-    cn.im = cn.mod ** pow * Math.sin(pow * cn.arg);
-  }
 
 }
 
