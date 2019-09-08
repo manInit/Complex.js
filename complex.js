@@ -4,6 +4,10 @@ class Complex {
     this.im = im;
   }
 
+  static _sgn(x) {
+    return x >= 0 ? 1 : -1;
+  }
+
   toString() {
     return `${this.re.toFixed(2)} + ${this.im.toFixed(2)}i`;
   }
@@ -12,10 +16,6 @@ class Complex {
   }
   toExponen() {
     return `${this.mod.toFixed(2)}exp(${this.arg.toFixed(2)}i)`;
-  }
-
-  static sgn(x) {
-    return x >= 0 ? 1 : -1;
   }
 
   get mod() {
@@ -39,7 +39,7 @@ class Complex {
                        (cn2.re * cn1.im - cn1.re * cn2.im) / (cn2.re ** 2 + cn2.im ** 2));
   }
   static sqrt(cn) {
-    return new Complex(Math.sqrt((cn.re + cn.mod) / 2), Complex.sgn(cn.im) * Math.sqrt((-cn.re + cn.mod) / 2));
+    return new Complex(Math.sqrt((cn.re + cn.mod) / 2), Complex._sgn(cn.im) * Math.sqrt((-cn.re + cn.mod) / 2));
   }
   static exp(cn) {
     return new Complex(Math.exp(cn.re) * Math.cos(cn.im), Math.exp(cn.re) * Math.sin(cn.im));
